@@ -1,0 +1,8 @@
+<li id="todo_<%= todo.id %>">
+  <%= form_with model: todo, url: toggle_complete_todo_path(todo), method: :patch, data: { turbo_stream: true } do |f| %>
+    <%= f.check_box :complete, checked: todo.complete, onchange: "this.form.requestSubmit()" %>
+    <span style="<%= 'text-decoration: line-through;' if todo.complete %>">
+      <%= todo.title %>: <%= todo.description %>
+    </span>
+  <% end %>
+</li>
