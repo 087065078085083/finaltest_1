@@ -17,10 +17,11 @@ test:
 
 production:
   <<: *default
-  adapter: postgresql
-  encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   url: <%= ENV['DATABASE_URL'] %>
   database: todo_app_production
   username: todo_app
   password: <%= ENV["TODO_APP_DATABASE_PASSWORD"] %>
+
+# 👇 เพิ่มส่วนนี้แยกออกมา
+cable:
+  url: <%= ENV["DATABASE_URL"] %>
