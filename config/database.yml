@@ -22,10 +22,12 @@ production:
   username: todo_app
   password: <%= ENV["TODO_APP_DATABASE_PASSWORD"] %>
 
-# 👇 เพิ่มส่วนนี้
+# ✅ เพิ่ม 3 environment แยกต่างหาก (อย่าเขียนไว้ใน production)
 cable:
   url: <%= ENV["DATABASE_URL"] %>
 
-# 👇 และส่วนนี้
 queue:
+  url: <%= ENV["DATABASE_URL"] %>
+
+cache:
   url: <%= ENV["DATABASE_URL"] %>
